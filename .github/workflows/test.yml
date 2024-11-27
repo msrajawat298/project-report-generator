@@ -1,4 +1,4 @@
-name: Run Project Analysis Action
+name: Project Report Generation
 
 on:
   push:
@@ -6,34 +6,26 @@ on:
       - main
 
 jobs:
-  analyze:
+  generate_report:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Install git
-        run: sudo apt-get install -y git
-
-      - name: Run project analysis action
-        uses: ./ # Path to your action in the local repository
-        with:
-          report_format: 'md'
-
-      - name: Commit and push report
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Set up Git configuration
         run: |
-          git config --global user.name "Mayank Singh"
-          git config --global user.email "msrajawat298@gmail.com"
-          git add ./project-report.md
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Generate project report
+        run: |
+          node index.js # Or the command to generate the report
+
+      - name: Commit and push changes
+        run: |
+          git add project-report.md
           git commit -m "Add project report"
-          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
+          git push https://github.com/${{ github.repository }} HEAD:${{ github.ref }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
