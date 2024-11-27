@@ -1,0 +1,14 @@
+name: "Project Report Generator"
+description: "Generates a comprehensive report about the project, including directory structure, tech stack, and usage."
+author: "Mayank Singh"
+inputs:
+  report_format:
+    description: "The format of the report (html or md)."
+    required: true
+    default: "md"
+outputs:
+  report_path:
+    description: "The path to the generated report."
+runs:
+  using: "node16"
+  main: "index.js"

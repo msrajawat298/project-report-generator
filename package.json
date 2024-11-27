@@ -1,0 +1,21 @@
+{
+  "name": "project-report-generator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@actions/artifact": "^2.1.11",
+    "@actions/core": "^1.11.1",
+    "@actions/exec": "^1.1.1",
+    "@actions/github": "^6.0.0",
+    "fs-extra": "^11.2.0",
+    "path": "^0.12.7",
+    "punycode": "^2.3.1"
+  }
+}

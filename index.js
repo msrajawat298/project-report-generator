@@ -1,0 +1,90 @@
+const fs = require('fs-extra');
+const core = require('@actions/core');
+const exec = require('@actions/exec');
+const artifact = require('@actions/artifact');
+const { analyzeDir, detectTechStack, detectDependencies, extractFunctionsAndClasses } = require('./helpers');
+
+async function main() {
+  try {
+    // Inputs
+    const reportFormat = core.getInput('report_format') || 'html';
+    const excludeFilesInput = core.getInput('exclude_files') || '';
+    const excludeFiles = excludeFilesInput.split(',').map((item) => item.trim());
+    const uploadArtifact = core.getInput('upload_artifact') === 'true';
+    const commitReport = core.getInput('commit_report') === 'true';
+
+    // Analyze Project
+    const dirStructure = analyzeDir('./', excludeFiles);
+    const techStack = detectTechStack();
+    const dependencies = detectDependencies();
+    const setupInstructions = fs.existsSync('README.md') ? fs.readFileSync('README.md', 'utf-8') : 'No README.md found.';
+
+    // Generate Report Content
+    const reportContent = `# Project Report
+
+## Directory Structure
+${dirStructure
+      .map((item) => {
+        const baseInfo = `- ${item.isDirectory ? '📂' : '📄'} ${item.name} (Size: ${item.size} bytes, Modified: ${item.modified})`;
+        if (item.functionsAndClasses) {
+          return `${baseInfo}\n  - Functions: ${item.functionsAndClasses.functions.join(', ') || 'None'}\n  - Classes: ${item.functionsAndClasses.classes.join(', ') || 'None'}`;
+        }
+        return baseInfo;
+      })
+      .join('\n')}
+      
+## Detected Tech Stack
+${techStack.length ? techStack.join(', ') : 'No tech stack detected.'}
+      
+## Dependencies
+${dependencies.length
+      ? dependencies
+          .map(({ type, lib, version }) => `- [${type}] ${lib}: ${version}`)
+          .join('\n')
+      : 'No dependencies found.'}
+      
+## Setup Instructions
+${setupInstructions}`;
+
+    // Generate Report File
+    const reportPath = `./project-report.${reportFormat}`;
+    if (reportFormat === 'md') {
+      fs.writeFileSync(reportPath, reportContent);
+    } else if (reportFormat === 'html') {
+      const htmlContent = `
+        <html>
+          <head><title>Project Report</title></head>
+          <body>
+            <pre>${reportContent}</pre>
+          </body>
+        </html>
+      `;
+      fs.writeFileSync(reportPath, htmlContent);
+    } else {
+      throw new Error('Invalid report format. Choose either "md" or "html".');
+    }
+
+    core.setOutput('report_path', reportPath);
+
+    // Upload Report as Artifact
+    if (uploadArtifact) {
+      const artifactClient = artifact.create();
+      await artifactClient.uploadArtifact('project-report', [reportPath], '.');
+    }
+
+    // Commit the Report to Repository
+    if (commitReport) {
+      await exec.exec('git', ['config', '--global', 'user.name', 'github-actions']);
+      await exec.exec('git', ['config', '--global', 'user.email', 'github-actions@github.com']);
+      await exec.exec('git', ['add', reportPath]);
+      await exec.exec('git', ['commit', '-m', 'Add project report']);
+      await exec.exec('git', ['push']);
+    }
+
+    console.log(`Report generated and saved to: ${reportPath}`);
+  } catch (error) {
+    core.setFailed(`Action failed with error: ${error.message}`);
+  }
+}
+
+main();
