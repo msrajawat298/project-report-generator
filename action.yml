@@ -6,6 +6,18 @@ inputs:
     description: "The format of the report (html or md)."
     required: true
     default: "md"
+  exclude_files:
+    description: "Comma-separated list of files or folders to exclude from analysis."
+    required: false
+    default: ""
+  upload_artifact:
+    description: "Upload the generated report as an artifact."
+    required: false
+    default: "false"
+  commit_report:
+    description: "Commit the generated report to the repository."
+    required: false
+    default: "false"
 outputs:
   report_path:
     description: "The path to the generated report."
