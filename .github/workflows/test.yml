@@ -26,11 +26,9 @@ jobs:
 
       - name: Run project analysis action
         uses: ./  # Ensure this points to your custom action
-        with:
-          file-path: './docs/'
 
       - name: Upload report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: project-report
           path: ./project-report.md
