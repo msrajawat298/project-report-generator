@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const core = require('@actions/core');
 const exec = require('@actions/exec');
-const artifact = require('@actions/artifact');
+const {DefaultArtifactClient} = require('@actions/artifact');
 const { analyzeDir, detectTechStack, detectDependencies, extractFunctionsAndClasses } = require('./helpers');
 
 async function main() {
@@ -67,10 +67,26 @@ ${setupInstructions}`;
     core.setOutput('report_path', reportPath);
 
     // Upload Report as Artifact
+    const { DefaultArtifactClient } = require('@actions/artifact');
+
     if (uploadArtifact) {
-      const artifactClient = artifact.create();
-      await artifactClient.uploadArtifact('project-report', [reportPath], '.');
+      // Initialize the artifact client
+      const artifact = new DefaultArtifactClient();
+
+      try {
+        // Upload the artifact
+        const { id, size } = await artifact.uploadArtifact(
+          'project-report', // Artifact name
+          [reportPath], // List of file paths (array of report files)
+          '.' // Directory path (where to look for the files)
+        );
+
+        console.log(`Successfully uploaded artifact with id: ${id}, size: ${size} bytes`);
+      } catch (error) {
+        console.error('Error uploading artifact:', error);
+      }
     }
+
 
     // Commit the Report to Repository
     if (commitReport) {

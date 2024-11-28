@@ -1,9 +1,7 @@
 name: Run Project Analysis Action
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -29,5 +27,4 @@ jobs:
         with:
           report_format: 'md'
           exclude_files: 'node_modules,build,.git'
-          # upload_artifact: 'true'
           commit_report: 'true'
