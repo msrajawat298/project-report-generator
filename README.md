@@ -39,7 +39,7 @@ jobs:
 | **Input**         | **Description**                                   | **Required** | **Default** |
 |--------------------|---------------------------------------------------|--------------|-------------|
 | `report_format`    | The format of the report (`html` or `md`).        | No          | `md`        |
-| `exclude_files`    | Comma-separated list of files to exclude.         | No           | `''`        |
+| `exclude_files`    | Comma-separated list of files to exclude.         | No           | `'node_modules,build,.git'`        |
 | `upload_artifact`  | Upload the report as an artifact (`true`/`false`).| No           | `false`     |
 | `commit_report`    | Commit the report to the repository (`true`/`false`). | No           | `false`     |
 | `commit_username`    | Allows you to customize the committer username. | No           | `github-actions`     |

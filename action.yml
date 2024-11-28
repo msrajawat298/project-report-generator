@@ -12,7 +12,7 @@ inputs:
   exclude_files:
     description: "Comma-separated list of files or folders to exclude from analysis."
     required: false
-    default: ""
+    default: "node_modules,build,.git"
   upload_artifact:
     description: "Upload the generated report as an artifact."
     required: false
@@ -26,4 +26,4 @@ outputs:
     description: "The path to the generated report."
 runs:
   using: "node16"
-  main: "index.js"
+  main: "dist/index.js"
