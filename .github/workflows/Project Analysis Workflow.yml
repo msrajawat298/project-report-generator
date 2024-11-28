@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Project Analysis
-        uses: msrajawat298/project-report-generator@v1.03
+        uses: msrajawat298/project-report-generator@v1.0.4
         with:
           report_format: "html"
           exclude_files: "node_modules,.git"
