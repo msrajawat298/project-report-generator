@@ -1,18 +1,19 @@
 # Project Report
 
 ## Directory Structure
-- 📂 .github (Size: 4096 bytes, Modified: 11/28/2024, 9:27:50 AM)
-- 📄 .gitignore (Size: 12 bytes, Modified: 11/28/2024, 9:27:50 AM)
-- 📄 README.md (Size: 3217 bytes, Modified: 11/28/2024, 9:27:50 AM)
-- 📄 action.yml (Size: 849 bytes, Modified: 11/28/2024, 9:27:50 AM)
-- 📄 helpers.js (Size: 2745 bytes, Modified: 11/28/2024, 9:27:50 AM)
+- 📂 .github (Size: 4096 bytes, Modified: 11/28/2024, 9:58:21 AM)
+- 📄 .gitignore (Size: 12 bytes, Modified: 11/28/2024, 9:58:21 AM)
+- 📄 README.md (Size: 3217 bytes, Modified: 11/28/2024, 9:58:21 AM)
+- 📄 action.yml (Size: 849 bytes, Modified: 11/28/2024, 9:58:21 AM)
+- 📄 helpers.js (Size: 2745 bytes, Modified: 11/28/2024, 9:58:21 AM)
   - Functions: None
   - Classes: None
-- 📄 index.js (Size: 3247 bytes, Modified: 11/28/2024, 9:27:50 AM)
+- 📄 index.js (Size: 3771 bytes, Modified: 11/28/2024, 9:58:21 AM)
   - Functions: main
   - Classes: None
-- 📄 package-lock.json (Size: 81198 bytes, Modified: 11/28/2024, 9:27:56 AM)
-- 📄 package.json (Size: 470 bytes, Modified: 11/28/2024, 9:27:50 AM)
+- 📄 package-lock.json (Size: 81198 bytes, Modified: 11/28/2024, 9:58:28 AM)
+- 📄 package.json (Size: 470 bytes, Modified: 11/28/2024, 9:58:21 AM)
+- 📄 project-report.md (Size: 4221 bytes, Modified: 11/28/2024, 9:58:21 AM)
       
 ## Detected Tech Stack
 Node.js
