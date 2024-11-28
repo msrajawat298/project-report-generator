@@ -1,20 +1,21 @@
 # Project Report
 
 ## Directory Structure
-- 📂 .github (Size: 4096 bytes, Modified: 11/28/2024, 12:10:10 PM)
-- 📄 .gitignore (Size: 12 bytes, Modified: 11/28/2024, 12:10:10 PM)
-- 📄 README.md (Size: 3458 bytes, Modified: 11/28/2024, 12:10:10 PM)
-- 📄 action.yml (Size: 849 bytes, Modified: 11/28/2024, 12:10:10 PM)
-- 📄 helpers.js (Size: 2745 bytes, Modified: 11/28/2024, 12:10:10 PM)
+- 📂 .github (Size: 4096 bytes, Modified: 11/28/2024, 12:13:37 PM)
+- 📄 .gitignore (Size: 12 bytes, Modified: 11/28/2024, 12:13:37 PM)
+- 📄 README.md (Size: 3481 bytes, Modified: 11/28/2024, 12:13:37 PM)
+- 📄 action.yml (Size: 1162 bytes, Modified: 11/28/2024, 12:13:37 PM)
+- 📂 dist (Size: 4096 bytes, Modified: 11/28/2024, 12:13:37 PM)
+- 📄 helpers.js (Size: 2745 bytes, Modified: 11/28/2024, 12:13:37 PM)
   - Functions: None
   - Classes: None
-- 📄 index.js (Size: 3989 bytes, Modified: 11/28/2024, 12:10:10 PM)
+- 📄 index.js (Size: 4012 bytes, Modified: 11/28/2024, 12:13:37 PM)
   - Functions: main
   - Classes: None
-- 📄 package-lock.json (Size: 81198 bytes, Modified: 11/28/2024, 12:10:17 PM)
-- 📄 package.json (Size: 470 bytes, Modified: 11/28/2024, 12:10:10 PM)
-- 📄 project-report.html (Size: 4699 bytes, Modified: 11/28/2024, 12:10:10 PM)
-- 📄 project-report.md (Size: 4299 bytes, Modified: 11/28/2024, 12:10:10 PM)
+- 📄 package-lock.json (Size: 81198 bytes, Modified: 11/28/2024, 12:13:41 PM)
+- 📄 package.json (Size: 513 bytes, Modified: 11/28/2024, 12:13:37 PM)
+- 📄 project-report.html (Size: 4699 bytes, Modified: 11/28/2024, 12:13:37 PM)
+- 📄 project-report.md (Size: 4630 bytes, Modified: 11/28/2024, 12:13:37 PM)
       
 ## Detected Tech Stack
 Node.js
@@ -70,7 +71,7 @@ jobs:
 | **Input**         | **Description**                                   | **Required** | **Default** |
 |--------------------|---------------------------------------------------|--------------|-------------|
 | `report_format`    | The format of the report (`html` or `md`).        | No          | `md`        |
-| `exclude_files`    | Comma-separated list of files to exclude.         | No           | `''`        |
+| `exclude_files`    | Comma-separated list of files to exclude.         | No           | `'node_modules,build,.git'`        |
 | `upload_artifact`  | Upload the report as an artifact (`true`/`false`).| No           | `false`     |
 | `commit_report`    | Commit the report to the repository (`true`/`false`). | No           | `false`     |
 | `commit_username`    | Allows you to customize the committer username. | No           | `github-actions`     |
