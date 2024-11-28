@@ -1,8 +1,5 @@
 name: "Project Analysis Workflow"
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
 
 permissions:
@@ -25,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Run Project Analysis
-        uses: msrajawat298/project-report-generator@v1.0.5
+        uses: msrajawat298/project-report-generator@v1.0.6
         with:
           exclude_files: "node_modules,.git"
           upload_artifact: "true"
