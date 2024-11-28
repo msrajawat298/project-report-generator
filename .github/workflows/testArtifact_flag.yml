@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   actions: write
 
 jobs:
@@ -27,4 +27,4 @@ jobs:
         with:
           report_format: 'md'
           exclude_files: 'node_modules,build,.git'
-          commit_report: 'true'
+          upload_artifact: 'true'

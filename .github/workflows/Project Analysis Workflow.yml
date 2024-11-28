@@ -15,4 +15,4 @@ jobs:
           report_format: "html"
           exclude_files: "node_modules,.git"
           upload_artifact: "true"
-          commit_report: "false"
+          commit_report: "true"

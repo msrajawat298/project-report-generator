@@ -1,9 +1,10 @@
+# this file is used to run the project analysis action on a remote repository
+# upload the file to the artifacts without passing any parameters
+
 name: Run Project Analysis Action
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -26,7 +27,9 @@ jobs:
 
       - name: Run project analysis action
         uses: ./  # Ensure this points to your custom action
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
         with:
-          report_format: 'md'
-          exclude_files: 'node_modules,build,.git'
-          upload_artifact: 'true'
+          name: project-report
+          path: ./project-report.md
