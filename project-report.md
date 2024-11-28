@@ -1,19 +1,20 @@
 # Project Report
 
 ## Directory Structure
-- 📂 .github (Size: 4096 bytes, Modified: 11/28/2024, 9:58:21 AM)
-- 📄 .gitignore (Size: 12 bytes, Modified: 11/28/2024, 9:58:21 AM)
-- 📄 README.md (Size: 3217 bytes, Modified: 11/28/2024, 9:58:21 AM)
-- 📄 action.yml (Size: 849 bytes, Modified: 11/28/2024, 9:58:21 AM)
-- 📄 helpers.js (Size: 2745 bytes, Modified: 11/28/2024, 9:58:21 AM)
+- 📂 .github (Size: 4096 bytes, Modified: 11/28/2024, 12:10:10 PM)
+- 📄 .gitignore (Size: 12 bytes, Modified: 11/28/2024, 12:10:10 PM)
+- 📄 README.md (Size: 3458 bytes, Modified: 11/28/2024, 12:10:10 PM)
+- 📄 action.yml (Size: 849 bytes, Modified: 11/28/2024, 12:10:10 PM)
+- 📄 helpers.js (Size: 2745 bytes, Modified: 11/28/2024, 12:10:10 PM)
   - Functions: None
   - Classes: None
-- 📄 index.js (Size: 3771 bytes, Modified: 11/28/2024, 9:58:21 AM)
+- 📄 index.js (Size: 3989 bytes, Modified: 11/28/2024, 12:10:10 PM)
   - Functions: main
   - Classes: None
-- 📄 package-lock.json (Size: 81198 bytes, Modified: 11/28/2024, 9:58:28 AM)
-- 📄 package.json (Size: 470 bytes, Modified: 11/28/2024, 9:58:21 AM)
-- 📄 project-report.md (Size: 4221 bytes, Modified: 11/28/2024, 9:58:21 AM)
+- 📄 package-lock.json (Size: 81198 bytes, Modified: 11/28/2024, 12:10:17 PM)
+- 📄 package.json (Size: 470 bytes, Modified: 11/28/2024, 12:10:10 PM)
+- 📄 project-report.html (Size: 4699 bytes, Modified: 11/28/2024, 12:10:10 PM)
+- 📄 project-report.md (Size: 4299 bytes, Modified: 11/28/2024, 12:10:10 PM)
       
 ## Detected Tech Stack
 Node.js
@@ -68,10 +69,13 @@ jobs:
 
 | **Input**         | **Description**                                   | **Required** | **Default** |
 |--------------------|---------------------------------------------------|--------------|-------------|
-| `report_format`    | The format of the report (`html` or `md`).        | Yes          | `md`        |
+| `report_format`    | The format of the report (`html` or `md`).        | No          | `md`        |
 | `exclude_files`    | Comma-separated list of files to exclude.         | No           | `''`        |
 | `upload_artifact`  | Upload the report as an artifact (`true`/`false`).| No           | `false`     |
 | `commit_report`    | Commit the report to the repository (`true`/`false`). | No           | `false`     |
+| `commit_username`    | Allows you to customize the committer username. | No           | `github-actions`     |
+| `commit_email`    | Allows you to customize the committer committer_email. | No           | `github-actions@github.com`     |
+
 
 ---
 
