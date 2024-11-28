@@ -1,0 +1,18 @@
+name: "Project Analysis Workflow"
+on:
+  workflow_dispatch:
+
+jobs:
+  analyze-project:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Run Project Analysis
+        uses: msrajawat298/project-report-generator@v1.03
+        with:
+          report_format: "html"
+          exclude_files: "node_modules,.git"
+          upload_artifact: "true"
+          commit_report: "false"
