@@ -1,7 +1,7 @@
 const fs = require('fs-extra');
 const core = require('@actions/core');
 const exec = require('@actions/exec');
-const {DefaultArtifactClient} = require('@actions/artifact');
+const { DefaultArtifactClient } = require('@actions/artifact');
 const { analyzeDir, detectTechStack, detectDependencies, extractFunctionsAndClasses } = require('./helpers');
 
 async function main() {
@@ -12,6 +12,10 @@ async function main() {
     const excludeFiles = excludeFilesInput.split(',').map((item) => item.trim());
     const uploadArtifact = core.getInput('upload_artifact') === 'true';
     const commitReport = core.getInput('commit_report') === 'true';
+    
+    // Optional commit username and email inputs
+    const commitUserName = core.getInput('commit_username') || 'github-actions';
+    const commitEmail = core.getInput('commit_email') || 'github-actions@github.com';
 
     // Analyze Project
     const dirStructure = analyzeDir('./', excludeFiles);
@@ -67,8 +71,6 @@ ${setupInstructions}`;
     core.setOutput('report_path', reportPath);
 
     // Upload Report as Artifact
-    const { DefaultArtifactClient } = require('@actions/artifact');
-
     if (uploadArtifact) {
       // Initialize the artifact client
       const artifact = new DefaultArtifactClient();
@@ -87,11 +89,11 @@ ${setupInstructions}`;
       }
     }
 
-
     // Commit the Report to Repository
     if (commitReport) {
-      await exec.exec('git', ['config', '--global', 'user.name', 'github-actions']);
-      await exec.exec('git', ['config', '--global', 'user.email', 'github-actions@github.com']);
+      // Set commit username and email from inputs or default to 'github-actions'
+      await exec.exec('git', ['config', '--global', 'user.name', commitUserName]);
+      await exec.exec('git', ['config', '--global', 'user.email', commitEmail]);
       await exec.exec('git', ['add', reportPath]);
       await exec.exec('git', ['commit', '-m', 'Add project report']);
       await exec.exec('git', ['push']);
