@@ -8,7 +8,7 @@ async function main() {
   try {
     // Inputs
     const reportFormat = core.getInput('report_format') || 'html';
-    const excludeFilesInput = core.getInput('exclude_files') || '';
+    const excludeFilesInput = core.getInput('exclude_files') || 'node_modules,build,.git';
     const excludeFiles = excludeFilesInput.split(',').map((item) => item.trim());
     const uploadArtifact = core.getInput('upload_artifact') === 'true';
     const commitReport = core.getInput('commit_report') === 'true';
