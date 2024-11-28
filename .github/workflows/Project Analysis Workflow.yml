@@ -27,7 +27,8 @@ jobs:
       - name: Run Project Analysis
         uses: msrajawat298/project-report-generator@v1.0.5
         with:
-          report_format: "html"
           exclude_files: "node_modules,.git"
           upload_artifact: "true"
           commit_report: "true"
+          commit_username: "msrajawat298"
+          commit_email: msrajawat298@gmail.com
