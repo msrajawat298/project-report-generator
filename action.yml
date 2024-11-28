@@ -21,6 +21,14 @@ inputs:
     description: "Commit the generated report to the repository."
     required: false
     default: "false"
+  commit_username:
+    description: "Allows you to customize the committer username"
+    required: false
+    default: "github-actions"
+  commit_email:
+    description: "Allows you to customize the committer committer_email"
+    required: false
+    default: "github-actions@github.com"
 outputs:
   report_path:
     description: "The path to the generated report."
